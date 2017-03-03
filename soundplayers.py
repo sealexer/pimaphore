@@ -40,7 +40,7 @@ class RotatingSoundPlayer:
         pygame.mixer.quit()
 
     def start(self):
-        # print "Start playing " + str(self.sound_files[self.current_file_index])
+        # print("Start playing " + str(self.sound_files[self.current_file_index]))
         pygame.mixer.music.load(self.sound_files[self.current_file_index])
         pygame.mixer.music.play(-1)
 

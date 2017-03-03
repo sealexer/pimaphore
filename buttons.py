@@ -19,19 +19,11 @@ class Button:
 
     def wait_for_pressure(self):
         """ Blocks until button is pressed. Returns the pressure duration in seconds """
+        duration = 0
         GPIO.wait_for_edge(self.pin, GPIO.FALLING)
         for i in range(int(PRESSURE_LENGTH_OBSERVATION_MAX_TIMEOUT / PRESSURE_CHECK_PERIOD)):
-            if GPIO.input(self.pin):
+            if not self.is_pressed():
                 break
             time.sleep(PRESSURE_CHECK_PERIOD)
-        duration = i * PRESSURE_CHECK_PERIOD    # TODO: refactor this
+            duration += PRESSURE_CHECK_PERIOD
         return duration
-
-
-class PressureResult:
-    SUCCESS = 1
-    FAILURE = 0
-
-    def __init__(self, status, duration):
-        self.status = status
-        self.duration = duration

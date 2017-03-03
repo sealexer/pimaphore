@@ -78,7 +78,7 @@ class RedLampsController(Thread):
             while self.event_start.isSet():
                 self.lamp_left.invert_state()
                 self.lamp_right.invert_state()
-                # print str(self.lamp_left) + "\t" + str(self.lamp_right)
+                # print(str(self.lamp_left) + "\t" + str(self.lamp_right))
                 sleep(RED_DELAY)
             self.lamp_right.off()
             self.lamp_left.off()
@@ -104,10 +104,10 @@ class ButtonController(Thread):
     def run(self):
         while True:
             duration = self.button.wait_for_pressure()
-            print "Pressure detected"
+            # print("Pressure detected")
             if duration >= SEMAPHORE_MODE_SWITCH_THRESHOLD:
                 self.semaphore_mode.invert()
                 self.white_lamp_controller.blink_twice()
-                print "Semaphore mode inverted"
+                # print("Semaphore mode inverted")
             else:
                 self.invert_start_stop_state()

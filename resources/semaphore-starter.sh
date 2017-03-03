@@ -9,7 +9,7 @@
 # Short-Description: Semaphore software for toy railway
 ### END INIT INFO
 
-SEMAPHORE_DIR=/D/Projects/Idea/PyTest
+SEMAPHORE_DIR=/D/Projects/Idea/Pimaphore
 SEMAPHORE_SCRIPT=${SEMAPHORE_DIR}/Main.py
 PIDFILE=${SEMAPHORE_DIR}/pid.lock
 LOG=${SEMAPHORE_DIR}/log.txt

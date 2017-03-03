@@ -12,10 +12,8 @@ PIN_RED_LEFT = 27
 PIN_RED_RIGHT = 22
 PIN_BUTTON = 17
 
-SOUND_PATH = "/D/Projects/Idea/PyTest/resources"
+SOUND_PATH = "/D/Projects/Idea/Pimaphore/resources"
 SOUND_FILES = ["pereezd-1.mp3", "pereezd-2.mp3", "pereezd-3.mp3", "pereezd-4.mp3"]
-
-
 
 
 class Semaphore:
@@ -34,7 +32,7 @@ class Semaphore:
         self.event_stop.set()
 
     def start(self):
-        print "Creating and starting threads"
+        # print("Creating and starting threads")
         t1 = RedLampsController(PIN_RED_LEFT, PIN_RED_RIGHT, self.event_start)
         t2 = SoundPlayerController(self.sound_player, self.event_start, self.event_stop)
         t3 = WhiteLampController(PIN_WHITE, self.event_stop, self.semaphore_mode)
@@ -47,15 +45,7 @@ class Semaphore:
         t2.start()
         t3.start()
         t4.start()
-        print "Threads started"
-
-    # def button_pressed(self):
-    #     if self.event_start.isSet():
-    #         self.event_start.clear()
-    #         self.event_stop.set()
-    #     else:
-    #         self.event_start.set()
-    #         self.event_stop.clear()
+        # print("Threads started")
 
     def cleanup(self):
         GPIO.cleanup()
